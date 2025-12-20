@@ -2,6 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+// Dynamically import the map component with no SSR to avoid window/document issues
+const WorldMap = dynamic(() => import("@/components/WorldMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-blue-50 rounded-xl">
+      <p className="text-gray-600">Loading map...</p>
+    </div>
+  ),
+});
 
 export default function LiveMapPage() {
   return (
@@ -20,37 +31,26 @@ export default function LiveMapPage() {
             </p>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-            <div className="aspect-video bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center border-2 border-blue-200">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🗺️</div>
-                <h2 className="text-2xl font-bold text-gray-700 mb-2">
-                  Live Map Coming Soon
-                </h2>
-                <p className="text-gray-600">
-                  Interactive whale detection visualization will be displayed here
-                </p>
-              </div>
-            </div>
+          {/* Demo Notice */}
+          <div className="bg-blue-600 text-white rounded-xl p-6 mb-8 text-center">
+            <p className="text-lg font-semibold mb-2">
+              🐋 Demo Mode - This is a demonstration with simulated data
+            </p>
+            <p className="text-sm mb-3">
+              Interested in a real whale detection solution for your organization?
+            </p>
+            <Link 
+              href="/contact" 
+              className="inline-block bg-white text-blue-600 px-6 py-2 rounded-lg font-bold hover:bg-blue-50 transition-colors"
+            >
+              Get a Quote
+            </Link>
+          </div>
 
-            {/* Map Features Info */}
-            <div className="mt-8 grid md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-blue-50 rounded-xl">
-                <div className="text-3xl mb-2">📍</div>
-                <h3 className="font-bold text-gray-900 mb-1">Real-Time Locations</h3>
-                <p className="text-sm text-gray-600">Track whale detections as they happen</p>
-              </div>
-              <div className="text-center p-6 bg-cyan-50 rounded-xl">
-                <div className="text-3xl mb-2">📊</div>
-                <h3 className="font-bold text-gray-900 mb-1">Detection Analytics</h3>
-                <p className="text-sm text-gray-600">View trends and patterns over time</p>
-              </div>
-              <div className="text-center p-6 bg-indigo-50 rounded-xl">
-                <div className="text-3xl mb-2">🔔</div>
-                <h3 className="font-bold text-gray-900 mb-1">Alert System</h3>
-                <p className="text-sm text-gray-600">Get notified of nearby whale activity</p>
-              </div>
+          {/* Map Container */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="h-[600px] rounded-xl overflow-hidden relative border border-gray-300">
+              <WorldMap />
             </div>
           </div>
         </div>
