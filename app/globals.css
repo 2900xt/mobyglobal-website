@@ -71,3 +71,23 @@ body {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
 }
+
+/* Leaflet z-index fixes to prevent overlap with navbar */
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 10 !important;
+}
+
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  z-index: 10 !important;
+}
+
+.leaflet-popup-pane {
+  z-index: 20 !important;
+}
+
+.leaflet-popup {
+  z-index: 20 !important;
+}

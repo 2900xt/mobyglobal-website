@@ -48,8 +48,8 @@ export default function LiveMapPage() {
           </div>
 
           {/* Map Container */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-            <div className="h-[600px] rounded-xl overflow-hidden relative border border-gray-300">
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 relative z-0">
+            <div className="h-[600px] rounded-xl overflow-hidden relative border border-gray-300" style={{ zIndex: 1 }}>
               <WorldMap />
             </div>
           </div>
