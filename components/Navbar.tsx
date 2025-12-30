@@ -52,6 +52,14 @@ export default function Navbar() {
           >
             API Docs
           </Link>
+          <Link
+            href="/blog"
+            className={`font-semibold transition-all duration-300 hover:scale-105 text-sm ${
+              pathname.startsWith("/blog") ? "text-white border-b-2 border-white" : "text-white/90 hover:text-white"
+            }`}
+          >
+            Blog
+          </Link>
           <Link href="/signup" className="px-5 py-2 bg-white text-blue-600 font-bold rounded-lg transition-all duration-300 hover:scale-105 hover:bg-blue-50 shadow-md text-sm">
             Sign Up
           </Link>
