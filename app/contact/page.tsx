@@ -90,7 +90,7 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -123,7 +123,7 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                     placeholder="+1 (555) 000-0000"
                   />
                 </div>
@@ -139,7 +139,7 @@ export default function ContactPage() {
                     required={formType === "buoy"}
                     value={formData.organization}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                     placeholder={formType === "buoy" ? "ABC Shipping Co." : "My Vessel"}
                   />
                 </div>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                       required
                       value={formData.organizationType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                     >
                       <option value="">Select organization type...</option>
                       <option value="shipping">Shipping Company</option>
@@ -181,7 +181,7 @@ export default function ContactPage() {
                       required
                       value={formData.fleetSize}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                       placeholder="e.g., 10 vessels, 50 sq km"
                     />
                   </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
                     name="fleetSize"
                     value={formData.fleetSize}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                     placeholder="e.g., 1, 3, 5"
                   />
                 </div>
@@ -218,7 +218,7 @@ export default function ContactPage() {
                   required
                   value={formData.deploymentArea}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                   placeholder="e.g., Pacific Northwest, Gulf of Maine"
                 />
               </div>
@@ -234,7 +234,7 @@ export default function ContactPage() {
                   required
                   value={formData.useCase}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-gray-900"
                   placeholder="e.g., Shipping route protection, Research, Commercial fishing"
                 />
               </div>
@@ -249,7 +249,7 @@ export default function ContactPage() {
                   rows={4}
                   value={formData.additionalInfo}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none text-gray-900"
                   placeholder="Any specific requirements or questions..."
                 />
               </div>
