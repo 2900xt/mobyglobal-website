@@ -41,20 +41,33 @@ Primary Use Case: ${useCase}
 ${additionalInfo ? `Additional Information:\n${additionalInfo}` : ''}
 
 Estimated Pricing: ${priceRange}
-
-Feel free to reach out to the requester for further details. We will follow up promptly.
     `.trim();
 
-    // Send email
+    const emailContentConfirm = `
+Dear ${name},
+
+Thank you for your interest in our ${productType}. We have received your quote request and will get back to you shortly.
+    `.trim();
+
+    // Send email to Moby Labs contact address
     const data = await resend.emails.send({
       from: 'Moby Labs <info@mobylabs.org>', // You'll need to update this with your verified domain
-      to: ['contact@mobylabs.org', email],
+      to: ['contact@mobylabs.org'],
       replyTo: email,
       subject: `${productType} Quote Request from ${name}`,
       text: emailContent,
     });
 
-    return NextResponse.json({ success: true, data });
+    // Send confirmation email to user
+    const data_confirm = await resend.emails.send({
+      from: 'Moby Labs <info@mobylabs.org>', // You'll need to update this with your verified domain
+      to: [email],
+      replyTo: 'contact@mobylabs.org',
+      subject: `${productType} Quote Request from ${name}`,
+      text: emailContentConfirm,
+    });
+
+    return NextResponse.json({ success: true, data, data_confirm });
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
