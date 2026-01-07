@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function ContactPage() {
   const [formType, setFormType] = useState<"buoy" | "suam">("buoy");
@@ -17,12 +15,46 @@ export default function ContactPage() {
     useCase: "",
     additionalInfo: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", { formType, ...formData });
-    alert("Thank you for your inquiry! We'll get back to you soon.");
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ formType, ...formData }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setSubmitStatus("success");
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        organization: "",
+        organizationType: "",
+        fleetSize: "",
+        deploymentArea: "",
+        useCase: "",
+        additionalInfo: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -276,16 +308,32 @@ export default function ContactPage() {
                 </p>
               </div>
 
+              {/* Success/Error Messages */}
+              {submitStatus === "success" && (
+                <div className="bg-green-50 border-2 border-green-200 rounded-xl p-4 text-green-800">
+                  <p className="font-semibold">Thank you for your inquiry!</p>
+                  <p className="text-sm">We'll get back to you soon at the email address you provided.</p>
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 text-red-800">
+                  <p className="font-semibold">Something went wrong.</p>
+                  <p className="text-sm">Please try again or contact us directly at contact@mobylabs.org</p>
+                </div>
+              )}
+
               {/* Submit Button */}
               <button
                 type="submit"
-                className={`w-full py-4 rounded-xl text-white font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg ${
+                disabled={isSubmitting}
+                className={`w-full py-4 rounded-xl text-white font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 ${
                   formType === "buoy"
                     ? "bg-blue-600 hover:bg-blue-700"
                     : "bg-cyan-600 hover:bg-cyan-700"
                 }`}
               >
-                Request Quote
+                {isSubmitting ? "Sending..." : "Request Quote"}
               </button>
             </form>
           </div>
