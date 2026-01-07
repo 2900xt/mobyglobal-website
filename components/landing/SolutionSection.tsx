@@ -24,11 +24,11 @@ export function SolutionSection() {
         <div className="absolute bottom-1/3 left-1/2 w-1 h-1 bg-cyan-300/50 rounded-full animate-float" />
       </div>
 
-      {/* Top fade - transition from ProcessSection */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
+      {/* Top fade - transition from ProcessSection (matches slate-950) */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-slate-950 via-slate-950/50 to-transparent z-10 pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
-        <div className="text-center mb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16">
+        <div className="text-center mb-10">
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
               Our Solution
@@ -40,7 +40,7 @@ export function SolutionSection() {
         </div>
 
         {/* Product Comparison */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-10">
+        <div className="grid lg:grid-cols-2 gap-6 mb-8">
           {/* Buoy Network */}
           <div className="group relative bg-white/5 backdrop-blur-xl p-8 rounded-2xl border border-white/10 hover:border-cyan-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_60px_rgba(6,182,212,0.2)]">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -72,7 +72,7 @@ export function SolutionSection() {
               <div className="text-white/70 font-medium mb-6">Shipping companies, coastal management, research institutions</div>
 
               <Link
-                href="/signup?product=network"
+                href="/contact?type=buoy"
                 className="group/btn relative inline-flex w-full items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-lg font-bold rounded-xl hover:scale-[1.02] transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
@@ -117,7 +117,7 @@ export function SolutionSection() {
               <div className="text-white/70 font-medium mb-6">Commercial vessels, fishing boats, recreational boaters</div>
 
               <Link
-                href="/signup?product=suam"
+                href="/contact?type=suam"
                 className="group/btn relative inline-flex w-full items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-lg font-bold rounded-xl hover:scale-[1.02] transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_50px_rgba(6,182,212,0.5)] overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-cyan-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />

@@ -47,7 +47,7 @@ export default function AboutPage() {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="py-20 px-6">
+        <section id="team" className="py-10 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
               <Profile

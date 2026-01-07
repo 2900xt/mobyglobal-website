@@ -34,11 +34,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/live-map" className="text-white/80 hover:text-white transition-colors">
-                  Demo Map
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog" className="text-white/80 hover:text-white transition-colors">
                   Blog
                 </Link>

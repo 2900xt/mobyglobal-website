@@ -115,7 +115,7 @@ export default function Navbar() {
           >
             About Us
           </Link>
-          <Link
+          {/*<Link
             href="/live-map"
             className={`font-semibold transition-all duration-300 hover:scale-105 text-sm ${
               pathname === "/live-map"
@@ -134,7 +134,7 @@ export default function Navbar() {
             }`}
           >
             API Docs
-          </Link>
+          </Link>*/}
           <Link
             href="/blog"
             className={`font-semibold transition-all duration-300 hover:scale-105 text-sm ${

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Animated mesh gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
         {/* Animated gradient orbs */}
@@ -26,7 +26,7 @@ export function HeroSection() {
         <div className="absolute bottom-1/3 left-1/2 w-1 h-1 bg-cyan-300/50 rounded-full animate-float" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-32 text-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 py-24 text-center relative z-10">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-cyan-300 text-sm font-medium mb-8 shadow-lg">
           <span className="relative flex h-2 w-2">
@@ -58,32 +58,35 @@ export function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link
-            href="/contact"
+            href="/signup"
             className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-lg font-bold rounded-2xl hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:shadow-[0_0_60px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 flex items-center gap-2">
-              Join the Waitlist
+              Join Our Waitlist
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
           </Link>
-          <Link
-            href="/live-map"
+          
+          <a
+            href="https://cal.com/ahat-rawjani/moby-labs-demo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group px-10 py-5 bg-white/5 backdrop-blur-xl text-white text-lg font-bold rounded-2xl hover:bg-white/10 transition-all duration-300 border-2 border-white/20 hover:border-white/40 shadow-xl hover:scale-105"
           >
             <span className="flex items-center gap-2">
-              View Demo Map
+              Schedule a Demo
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </span>
-          </Link>
+          </a>
         </div>
 
         {/* Stats bar */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
             { value: "370", label: "North Atlantic Right Whales Alive" },
             { value: "70", label: "NARWs Breeding Population" },
