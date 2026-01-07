@@ -2,10 +2,47 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+
+const PROCESS_SECTION_COUNT = 4; // Number of sections in ProcessSection
+
+const homeDropdownItems: { label: string; sectionIndex?: number; href?: string }[] = [
+  { label: "Moby Labs", href: "/#" },
+  { label: "Meet Moby", sectionIndex: 0 },
+  { label: "Our Solution", href: "/#solution" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
+
+  const scrollToProcessSection = (sectionIndex: number) => {
+    // If not on home page, navigate first
+    if (pathname !== "/") {
+      router.push("/");
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        performScroll(sectionIndex);
+      }, 100);
+    } else {
+      performScroll(sectionIndex);
+    }
+  };
+
+  const performScroll = (sectionIndex: number) => {
+    // Find the ProcessSection container (it has the specific height style)
+    const processSection = document.querySelector('section[style*="height"]');
+    if (!processSection) return;
+
+    const containerHeight = processSection.clientHeight;
+    const viewportHeight = window.innerHeight;
+    const totalScrollable = containerHeight - viewportHeight;
+    const sectionHeight = totalScrollable / PROCESS_SECTION_COUNT;
+    const targetScroll = (processSection as HTMLElement).offsetTop + (sectionIndex * sectionHeight) + (sectionHeight * 0.3);
+    window.scrollTo({ top: targetScroll, behavior: "smooth" });
+  };
 
   return (
     <nav
@@ -23,16 +60,51 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/"
-            className={`font-semibold transition-all duration-300 hover:scale-105 text-sm ${
-              pathname === "/"
-                ? "text-cyan-300 border-b-2 border-cyan-400"
-                : "text-white/70 hover:text-white"
-            }`}
+          {/* Home with dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setHomeDropdownOpen(true)}
+            onMouseLeave={() => setHomeDropdownOpen(false)}
           >
-            Home
-          </Link>
+            <Link
+              href="/"
+              className={`font-semibold transition-all duration-300 hover:scale-105 text-sm ${
+                pathname === "/"
+                  ? "text-cyan-300 border-b-2 border-cyan-400"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              Home
+            </Link>
+            {/* Dropdown */}
+            <div
+              className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 ${
+                homeDropdownOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-1"
+              }`}
+            >
+              <div className="bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.4)] py-2 min-w-[140px]">
+                {homeDropdownItems.map((item) => (
+                  item.href ? (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="block px-4 py-2 text-sm text-white/70 hover:text-cyan-300 hover:bg-white/5 transition-all duration-200"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      key={item.label}
+                      onClick={() => scrollToProcessSection(item.sectionIndex!)}
+                      className="block w-full text-left px-4 py-2 text-sm text-white/70 hover:text-cyan-300 hover:bg-white/5 transition-all duration-200"
+                    >
+                      {item.label}
+                    </button>
+                  )
+                ))}
+              </div>
+            </div>
+          </div>
           <Link
             href="/about"
             className={`font-semibold transition-all duration-300 hover:scale-105 text-sm ${

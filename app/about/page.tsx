@@ -1,64 +1,79 @@
 import { Profile } from "@/components/about/Profile";
-import { TimelineSection } from "@/components/landing/TimelineSection";
-import Image from "next/image";
+import Footer from "@/components/Footer";
+import Link from "next/link";
 
 export default function AboutPage() {
-
-  // When you click on my profile, redirect to my personal website
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 via-blue-800 to-cyan-900">
-      {/* Header Section */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-cyan-600 py-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            About Moby Labs
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Two dudes trying to save the whales :D
-          </p>
-        </div>
+    <div className="min-h-screen relative">
+      {/* Animated mesh gradient background - matching Hero */}
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
+        {/* Animated gradient orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse delay-700" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]" />
+
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(56,189,248,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+        {/* Noise texture */}
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
       </div>
 
+      {/* Floating particles */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-cyan-400/40 rounded-full animate-float" />
+        <div className="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-blue-400/30 rounded-full animate-float-delayed" />
+        <div className="absolute bottom-1/3 left-1/2 w-1 h-1 bg-cyan-300/50 rounded-full animate-float" />
+      </div>
 
-      {/* Team Section */}
-      <section id="team" className="py-20 px-6 bg-gradient-to-b from-transparent to-blue-950/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Meet Our Team
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-8"></div>
-          </div>
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Hero Header Section */}
+        <section className="pt-32 px-6">
+          <div className="max-w-7xl mx-auto text-center">
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Team Member 1 */}
-            <Profile name="Matthew Li" role="Co-Founder & CEO" bio="Hi! I'm Matthew, and I love using AI to solve real-world problems. I've done AI research at CMU and Princeton, but the one thing I love more than ChatGPT is whales!" imgSrc="/ML.png" skills={["AI/ML", "Computer Vision"]} website="https://www.linkedin.com/in/matthew-li-a49516258/" />
+            {/* Main headline */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[0.95] tracking-tight">
+              <span className="block bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
+                Who Are We?
+              </span>
+            </h1>
 
-            {/* Team Member 2 */}
-            <Profile name="Taha Rawjani" role="Co-Founder & CTO" bio="Hi! I'm Taha, and I LOVE WHALES!!! I've written my own OS and custom programming language, and I also love working on the embedded components of MobyGlobal." imgSrc="/TR.jpg" skills={["Research", "Embedded Systems"]} website="https://taharawjani.org" />
-          </div>
-
-          {/* Call to Action */}
-          <div className="mt-20 text-center bg-gradient-to-r from-blue-600 to-cyan-600 p-12 rounded-2xl">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Join Us in Our Mission
-            </h3>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Whether you're a shipping company, researcher, conservation organization, or just a whale enthusiast,
-              let's work together to protect our oceans.
+            {/* Subheadline */}
+            <p className="text-xl md:text-2xl text-white/80 mb-6 max-w-3xl mx-auto font-light leading-relaxed">
+              Two dudes trying to save the whales
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg">
-                Get in Touch
-              </a>
-              <a href="/live-map" className="px-8 py-4 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition-all duration-300 hover:scale-105 shadow-lg border-2 border-white/30">
-                View Demo Map
-              </a>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section id="team" className="py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+              <Profile
+                name="Matthew Li"
+                role="Co-Founder & CEO"
+                bio="Hi! I'm Matthew, and I'm pretty good at AI stuff."
+                imgSrc="/ML.png"
+                skills={["AI/ML", "Computer Vision"]}
+                website="https://www.linkedin.com/in/matthew-li-a49516258/"
+              />
+              <Profile
+                name="Taha Rawjani"
+                role="Co-Founder & CTO"
+                bio="Hi! I'm Taha, and I'm pretty good at embedded stuff."
+                imgSrc="/TR.jpg"
+                skills={["Research", "Embedded Systems"]}
+                website="https://taharawjani.org"
+              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        
+
+        <Footer />
+      </div>
     </div>
   );
 }
