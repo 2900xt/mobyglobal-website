@@ -209,7 +209,7 @@ export function ProcessSection() {
                   <div className="max-w-4xl mx-auto text-center">
                     {/* Subtitle badge */}
                     <div
-                      className="inline-block mb-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20"
+                      className="inline-block mb-4 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20"
                       style={{
                         opacity: textOpacity,
                         transform: `translateY(${translateY * 0.5}px)`,
@@ -222,7 +222,7 @@ export function ProcessSection() {
 
                     {/* Title */}
                     <h2
-                      className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight"
+                      className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-5 leading-tight"
                       style={{
                         textShadow: "0 4px 30px rgba(0,0,0,0.5)",
                       }}
@@ -245,7 +245,7 @@ export function ProcessSection() {
                     {/* Read More Button */}
                     <Link
                       href={section.blogLink}
-                      className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white font-medium hover:bg-white/20 hover:border-white/40 transition-all duration-300 group"
+                      className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white font-medium hover:bg-white/20 hover:border-white/40 transition-all duration-300 group"
                       style={{
                         opacity: textOpacity * 0.9,
                         transform: `translateY(${translateY * 1.4}px)`,
@@ -268,11 +268,11 @@ export function ProcessSection() {
                     </Link>
 
                     {/* Section indicator */}
-                    <div className="mt-12 flex justify-center gap-3">
+                    <div className="mt-8 flex justify-center gap-2">
                       {sections.map((_, i) => (
                         <div
                           key={i}
-                          className={`h-1 rounded-full transition-all duration-500 ${i === activeIndex
+                          className={`h-1 rounded transition-all duration-500 ${i === activeIndex
                               ? "w-12 bg-cyan-400"
                               : i < activeIndex
                                 ? "w-6 bg-white/50"
